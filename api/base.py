@@ -573,7 +573,7 @@ class Chaoxing:
         play_time = int(_job["playTime"]) // 1000
         last_log_time = 0
         last_iter = time.time()
-        wait_time = int(random.uniform(30, 90))
+        wait_time = int(random.uniform(60,120))
 
         logger.info(f"开始任务: {_job['name']}, 总时长: {duration}s, 已进行: {play_time}s")
 
@@ -605,7 +605,7 @@ class Chaoxing:
                         "出现403报错, 正在尝试刷新会话状态 (第{}次)",
                         forbidden_retry,
                     )
-                    time.sleep(random.uniform(2, 4))
+                    time.sleep(random.uniform(10,20))
                     refreshed_meta = self._recover_after_forbidden(_session, _job, _type)
                     if refreshed_meta:
                         # FIXME: if those keys aren't present, it should be considered an error rather than falling back
