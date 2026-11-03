@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import argparse
+import os
 import configparser
 import enum
 import sys
@@ -137,7 +138,14 @@ def load_config_from_file(config_path):
     # 检查并读取notification节
     if config.has_section("notification"):
         notification_config = dict(config.items("notification"))
-    
+        if os.getenv("CHAOXING_USERNAME"):
+           common_config["username"] = os.getenv("CHAOXING_USERNAME")
+        if os.getenv("CHAOXING_PASSWORD"):
+           common_config["password"] = os.getenv("CHAOXING_PASSWORD")
+        if os.getenv("CHAOXING_COURSE_LIST"):
+    # 将逗号分隔的字符串转为列表，并去除空格
+           env_courses = os.getenv("CHAOXING_COURSE_LIST")
+           common_config["course_list"] = [item.strip() for item in env_courses.split(",") if item.strip()]
     return common_config, tiku_config, notification_config
 
 
