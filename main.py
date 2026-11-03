@@ -180,7 +180,7 @@ def init_chaoxing(common_config, tiku_config):
     if (not username or not password) and not use_cookies:
         import os
         username = os.getenv("CHAOXING_USERNAME")
-        password = os.getenv("CHAOXING_PASSWARD")
+        password = os.getenv("CHAOXING_PASSWORD")
     
     account = Account(username, password)
     
