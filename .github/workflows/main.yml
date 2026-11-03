@@ -29,5 +29,7 @@ jobs:
           CHAOXING_USERNAME: ${{ secrets.CHAOXING_USERNAME }}
           CHAOXING_PASSWORD: ${{ secrets.CHAOXING_PASSWORD }}
           CHAOXING_COURSE_LIST: ${{ secrets.CHAOXING_COURSE_LIST }}
+          env_courses: $
+       {{secrets.CHAOXING_COURSE_LIST}}
         run: python main.py 
  
