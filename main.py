@@ -178,8 +178,9 @@ def init_chaoxing(common_config, tiku_config):
     
     # 如果没有提供用户名密码，从命令行获取
     if (not username or not password) and not use_cookies:
-        username = input("请输入你的手机号, 按回车确认\n手机号:")
-        password = input("请输入你的密码, 按回车确认\n密码:")
+        import os
+        username = os.getrnv("CHAOXING_USERNAME")
+        password = os.getenv("CHAOXING_PASSWARD")
     
     account = Account(username, password)
     
